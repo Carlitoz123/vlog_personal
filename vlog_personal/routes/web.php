@@ -5,6 +5,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-RoutE::get("/contacto", function(){ 
-    return view('contacto');
+RoutE::get("/contact", function(){ 
+    return view('contact');
+});
+RoutE::get("/post", function(){ 
+    return view('post');
+});
+RoutE::get("/about", function(){ 
+    return view('about');
 });
