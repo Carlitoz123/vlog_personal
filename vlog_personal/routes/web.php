@@ -14,3 +14,6 @@ RoutE::get("/post", function(){
 RoutE::get("/about", function(){ 
     return view('about');
 });
+RoutE::get("/dashboard", function(){ 
+    return view('admin.dashboard');
+});
