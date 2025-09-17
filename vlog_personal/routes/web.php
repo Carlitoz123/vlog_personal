@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsersController;
 //ENDPOINT
 Route::get('/', function () {
     return view('welcome');
@@ -14,6 +15,15 @@ RoutE::get("/post", function(){
 RoutE::get("/about", function(){ 
     return view('about');
 });
-RoutE::get("/dashboard", function(){ 
-    return view('admin.dashboard');
+
+    Route::group(['prefix'=>'dashboard'],function(){
+
+    RoutE::get("/", function(){ 
+        return view('admin.dashboard');
+    }); 
+    RoutE::get("/users",[UsersController::class,'getUsers']);
+
+
 });
+
+
