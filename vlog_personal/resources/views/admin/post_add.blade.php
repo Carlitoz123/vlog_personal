@@ -1,13 +1,52 @@
 @extends('admin.layouts.main')
 @section('contenido')
-    <h1>Agregar Posts</h1>
-    <div id="editor">
-        <p>Hello World!</p>
-        <p>Some initial <strong>bold</strong> text</p>
-        <p><br /></p>
-    </div>
-    
 
+    <h1>Agregar Posts</h1>
+
+    @if(session('success'))
+    <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+    @if($errors->any())
+    <div class="alert alert-danger">
+
+    <ul class="mb-0">
+        @foreach($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+
+    </div>
+    @endif
+
+    <form action="/dashboard/posts" method="POST" id="form" enctype="multipart/form-data">
+        @csrf
+
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input value="{{ old('title') }}" name="title" type="text" class="form-control" id="title">
+
+        </div>
+
+        <div class="form-group">
+        <label for="description">Description</label>
+        <input value="{{ old('description') }}" name="description" type="text" class="form-control" id="description">
+
+        </div>
+
+        <div class="form-group">
+        <label for="file">Img</label>
+        <input name="image" type="file" class="form-control" id="file">
+
+        </div>
+        <div>
+
+        
+        </div>
+
+
+    </form>
+
+    
 
 @endsection
 @section("scripts")
